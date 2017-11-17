@@ -1,17 +1,12 @@
 'use strict'
 
-var express = require('express');
-var mysql = require('mysql');
+const express = require('express');
+const mysql = require('mysql');
+const app = express();
 
-var app = express();
-
-app.use(express.json());
-
-app.use(express.static('./frontend'));
 app.use('/assets', express.static('./assets'));
-app.use(cors());
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'a',
