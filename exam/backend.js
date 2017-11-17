@@ -13,14 +13,20 @@ const connection = mysql.createConnection({
   database: 'licence_plates'
 });
 
-connection.connect();
+connection.connect(function(err) {
+    if (err) {
+        console.log("Can't connect to database");
+    } else { 
+        console.log("Connection estabilished");
+    }
+});
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + 'assets/index.html');
 });
 
 app.get('/search', function(req, res) {
-    
+
 })
 
 app.listen(8080, () => console.log('Server is running'));
