@@ -19,6 +19,8 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + 'assets/index.html');
 });
 
-
+app.get('/search', function(req, res) {
+    
+})
 
 app.listen(8080, () => console.log('Server is running'));
