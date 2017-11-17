@@ -1,13 +1,11 @@
 'use strict'
 
-let url = "http://localhost:8080";
+let url = 'http://localhost:8080';
 const tableElement = document.querySelector('table');
 const button = document.querySelector('button');
 const policeButton = document.querySelector('.police');
 const diplomatButton = document.querySelector('.diplomat');
 const inputField = document.querySelector('input');
-const urlSearch = 'http://localhost:8080/search';
-
 
 function ajax (method, url, callback) {
   let xhr = new XMLHttpRequest();
@@ -22,8 +20,8 @@ function ajax (method, url, callback) {
 function listAllData(response) {
   let information = JSON.parse(response);
   information.data.forEach(element => {
-    let tableData = '<tr><td>' + element.plate + 
-                    '</td><td>' + element.car_brandl + 
+		let tableData = '<tr><td>' + element.plate + 
+										'</td><td>' + element.car_brandl + 
                     '</td><td>' + element.car_model + 
                     '</td><td>' + element.color + 
                     '</td><td>' + element.year + 
@@ -33,7 +31,6 @@ function listAllData(response) {
 }
 
 button.addEventListener('click', function () {
-	url += inputField.value;
-	console.log(url);
-  ajax('GET', url, listAllData);
+	console.log(inputField.value);
+  ajax('GET', url + '/search/' + inputField.value, listAllData);
 });
